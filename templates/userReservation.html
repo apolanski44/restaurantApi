@@ -1,0 +1,81 @@
+{% extends 'globalNav.html' %}
+
+{% block title %}Table Reservation{% endblock %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Reservation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/userReservation.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Table Reservation System</h1>
+        <p>Start by selecting a date and time to check available tables!</p>
+    </header>
+    <main>
+        <section id="error-message" class="error-message" style="display: none;">
+            <p class="error"></p>
+        </section>
+
+        <section class="check-availability">
+            <h2>Check Available Tables</h2>
+            <form id="check-availability-form">
+                <label for="reservation_date">Reservation Date:</label>
+                <input type="date" id="reservation_date" name="reservation_date" required>
+
+                <label for="reservation_time">Reservation Time:</label>
+                <select id="reservation_time" name="reservation_time" required>
+                    <option value="17:00">17:00</option>
+                    <option value="18:00">18:00</option>
+                    <option value="19:00">19:00</option>
+                    <option value="20:00">20:00</option>
+                    <option value="21:00">21:00</option>
+                    <option value="22:00">22:00</option>
+                </select>
+
+                <button type="submit" class="button">Check Availability</button>
+            </form>
+        </section>
+
+        <section id="available-tables-section" class="available-tables" style="display: none;">
+            <h2>Available Tables</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Table ID</th>
+                        <th>Seats</th>
+                    </tr>
+                </thead>
+                <tbody id="available-tables-list">
+                </tbody>
+            </table>
+
+            <section class="reserve-table">
+                <h2>Reserve a Table</h2>
+                <form id="auto-reserve-form">
+                    <label for="lastname">Your Last Name:</label>
+                    <input type="text" id="lastname" name="lastname" placeholder="Enter your last name" required>
+
+                    <label for="guests">Number of Guests:</label>
+                    <input type="number" id="guests" name="guests" placeholder="Enter number of guests" required>
+
+                    <button type="submit" class="button">Reserve Automatically</button>
+                </form>
+
+                <form id="manual-reserve-form">
+                    <label for="lastname-manual">Your Last Name:</label>
+                    <input type="text" id="lastname-manual" name="lastname" placeholder="Enter your last name" required>
+
+                    <label for="table_id">Preferred Table ID:</label>
+                    <input type="number" id="table_id" name="table_id" placeholder="Enter table ID" required>
+
+                    <button type="submit" class="button">Reserve Table by ID</button>
+                </form>
+            </section>
+        </section>
+    </main>
+    <script src="{{ url_for('static', filename='js/userReservation.js') }}"></script>
+</body>
+{% endblock %}

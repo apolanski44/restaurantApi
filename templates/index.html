@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <title>Restaurant Reservations</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Our Restaurant</h1>
+        <p>Choose your role to continue:</p>
+        <div class="options">
+            <a href="/userindex">Guest: Reserve a Table or View Menu</a>
+            <a href="/adminlogin">Admin: Manage Tables and Dishes</a>
+        </div>
+    </div>
+</body>
+</html>

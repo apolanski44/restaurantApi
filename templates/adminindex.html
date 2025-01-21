@@ -1,0 +1,97 @@
+{% extends 'adminGlobalNav.html' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/adminindex.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Admin Dashboard</h1>
+    </header>
+    <main>
+        <div id="error-message" style="display: none; color: red; font-weight: bold;">
+            <p></p>
+        </div>
+
+        <div class="dashboard">
+            <div class="card">
+                <h2>Manage Tables</h2>
+                <p>Add, edit, and delete tables in your restaurant.</p>
+                <a href="/manageTables">Go to Tables</a>
+            </div>
+            <div class="card">
+                <h2>Manage Dishes</h2>
+                <p>Add, edit, and delete dishes in the menu.</p>
+                <a href="/manageMenu">Go to Dishes</a>
+            </div>
+            <div class="card">
+                <h2>Manage Reservations</h2>
+                <p>View and manage all reservations.</p>
+                <a href="/manageReservation">Go to Reservations</a>
+            </div>
+        </div>
+
+        <button id="logout-button" class="button">Logout</button>
+    </main>
+    <script>
+       fetch('/api/adminindex', {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+    }
+})
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.error) {
+            alert(data.error);
+            localStorage.removeItem('authToken');
+            window.location.href = '/adminlogin';
+        } else {
+            console.log(data.message);
+        }
+    })
+    .catch(error => {
+        alert('An error occurred while fetching admin data.');
+        console.error(error);
+    });
+        document.getElementById('logout-button').addEventListener('click', function () {
+    if (confirm('Are you sure you want to logout?')) {
+        fetch('/api/logout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    alert(data.message);
+                    localStorage.removeItem('authToken');
+                    window.location.href = '/adminlogin';
+                } else if (data.error) {
+                    alert(data.error);
+                }
+            })
+            .catch(error => {
+                alert('An error occurred during logout.');
+                console.error(error);
+            });
+    }
+});
+
+
+    </script>
+</body>
+{% endblock %}

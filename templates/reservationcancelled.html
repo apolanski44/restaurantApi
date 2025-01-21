@@ -1,0 +1,25 @@
+{% extends 'globalNav.html' %}
+
+{% block title %}Restaurant Menu{% endblock %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation Cancelled</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reservationcancelled.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Reservation System</h1>
+    </header>
+    <main>
+        <section class="confirmation-container">
+            <div class="success-icon">✔</div>
+            <h2>Reservation Cancelled</h2>
+            <p>Your reservation has been cancelled successfully.</p>
+            <a href="/userindex" class="button">Back to Home</a>
+        </section>
+    </main>
+</body>
+{% endblock %}

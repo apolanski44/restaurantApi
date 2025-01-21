@@ -1,0 +1,71 @@
+{% extends 'adminGlobalNav.html' %}
+
+{% block title %}Restaurant Menu{% endblock %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Menu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/manageMenu.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Manage Menu</h1>
+    </header>
+    <main>
+        <section class="filter-menu">
+            <h2>Filter Menu</h2>
+            <form id="filter-menu-form">
+                <label for="filter-category">Choose a category:</label>
+                <select id="category" name="category">
+                    <option value="">All</option>
+                    <option value="Soup">Soups</option>
+                    <option value="Drink">Drinks</option>
+                    <option value="Main Course">Main Courses</option>
+                </select>
+                <button type="submit" class="button">Filter</button>
+            </form>
+        </section>
+
+        <section class="menu-table">
+            <h2>Menu Items</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Price (PLN)</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="menu-items-list">
+                </tbody>
+            </table>
+        </section>
+
+        <section class="add-item">
+            <h2>Add New Item</h2>
+            <form id="add-item-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="add-category">Category:</label>
+                <select id="add-category" name="category" required>
+                    <option value="Soup">Soup</option>
+                    <option value="Drink">Drink</option>
+                    <option value="Main Course">Main Course</option>
+                </select>
+
+                <label for="price">Price (PLN):</label>
+                <input type="number" id="price" name="price" step="0.01" required>
+
+                <button type="submit" class="button">Add Item</button>
+            </form>
+            <div id="add-item-message"></div>
+        </section>
+    </main>
+    <script src="{{ url_for('static', filename='js/manageMenu.js') }}"></script>
+</body>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'adminGlobalNav.html' %}
+
+{% block title %}Manage Reservations{% endblock %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Reservations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/manageReservation.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Manage Reservations</h1>
+    </header>
+    <main>
+        <section class="search-reservations">
+            <h2>Find Reservations by Date</h2>
+            <form id="search-reservations-form">
+                <label for="reservation_date">Reservation Date:</label>
+                <input type="date" id="reservation_date" name="reservation_date" required>
+                <button type="submit" class="button">Search</button>
+            </form>
+        </section>
+
+        <div id="error-message" class="error"></div>
+
+        <section class="reservations-list">
+            <h2>Reservations</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Reservation ID</th>
+                        <th>Table ID</th>
+                        <th>Reservation Time</th>
+                        <th>Guests</th>
+                        <th>Last Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="reservations-list">
+
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script src="{{ url_for('static', filename='js/manageReservation.js') }}"></script>
+</body>
+{% endblock %}

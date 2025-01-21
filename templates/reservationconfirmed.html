@@ -1,0 +1,31 @@
+{% extends 'globalNav.html' %}
+
+{% block title %}Restaurant Menu{% endblock %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation Confirmed</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reservationConfirmed.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Reservation Confirmed</h1>
+    </header>
+    <main>
+        <section class="confirmation-container">
+            <div class="success-icon">✔</div>
+            <h2>Thank You for Your Reservation!</h2>
+            <p>Your reservation details are as follows:</p>
+            <ul>
+                <li><strong>Name:</strong> {{ reservation.lastname }}</li>
+                <li><strong>Date and Time:</strong> {{ reservation.reservation_datetime }}</li>
+                <li><strong>Table ID:</strong> {{ reservation.table_id }}</li>
+                <li><strong>Number of Guests:</strong> {{ reservation.guests }}</li>
+            </ul>
+            <a href="/userindex" class="button">Back to Home</a>
+        </section>
+    </main>
+</body>
+{% endblock %}

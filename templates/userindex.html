@@ -1,0 +1,36 @@
+{% extends 'globalNav.html' %}
+
+{% block title %}Restaurant Menu{% endblock %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/userindex.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our Restaurant</h1>
+        <p>Select an option to proceed:</p>
+    </header>
+    <main>
+        <div class="dashboard">
+            <div class="card">
+                <h2>Make a reservation</h2>
+                <p>Book a table for your visit.</p>
+                <a href="/userReservation" class="button">Reserve Now</a>
+            </div>
+            <div class="card">
+                <h2>View Menu</h2>
+                <p>Explore our delicious offerings.</p>
+                <a href="/menuindex" class="button">View Menu</a>
+            </div>
+            <div class="card">
+                <h2>Cancel a reservation</h2>
+                <a href="/cancelreservation" class="button">Cancel</a>
+            </div>
+        </div>
+    </main>
+</body>
+{% endblock %}

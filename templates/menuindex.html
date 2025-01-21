@@ -1,0 +1,50 @@
+{% extends 'globalNav.html' %}
+
+{% block title %}Restaurant Menu{% endblock %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menuindex.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Our Menu</h1>
+        <p>Browse our delicious dishes!</p>
+    </header>
+    <main>
+        <section class="filter-menu">
+            <h2>Filter Menu</h2>
+            <form id="filter-menu-form">
+                <label for="category">Choose a category:</label>
+                <select id="category" name="category">
+                    <option value="">All</option>
+                    <option value="Soup">Soups</option>
+                    <option value="Drink">Drinks</option>
+                    <option value="Main Course">Main Courses</option>
+                </select>
+                <button type="submit" class="button">Filter</button>
+            </form>
+        </section>
+
+        <section class="menu-table">
+            <h2>Menu Items</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Price (PLN)</th>
+                    </tr>
+                </thead>
+                <tbody id="menu-items-list">
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script src="{{ url_for('static', filename='js/menuindex.js') }}"></script>
+</body>
+{% endblock %}

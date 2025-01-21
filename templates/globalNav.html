@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Restaurant System{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/globalNav.css') }}">
+</head>
+<body>
+    <header class="navbar">
+        <nav>
+            <ul>
+                <li><a href="/userindex">Home</a></li>
+                <li><a href="/menuindex">Menu</a></li>
+                <li><a href="/userReservation">Reservations</a></li>
+                <li><a href="/cancelreservation">Cancel Reservation</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
